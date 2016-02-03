@@ -1,0 +1,84 @@
+//variables
+$tooltip-padding: 2%;
+$tooltip-width: 200px;
+
+
+//mixin
+@mixin vertical-align() {
+  top: 50%;
+  -webkit-transform: translateY(-50%);
+  -ms-transform: translateY(-50%);
+  transform: translateY(-50%);
+}
+
+body {
+	margin-top: 100px;
+	font-family: Sans-Serif;
+
+	html {
+		box-sizing: border-box;
+	}
+
+	h2 {
+		margin-bottom: 63px;
+	}
+
+	p{
+		font-size: 16px;
+	}
+
+	a {
+		font-weight: bold;
+		position: relative;
+
+		&:link{
+			text-decoration: none;
+		}
+
+		&:visited {
+			text-decoration: none;
+			color: #0090B2;
+		}
+	}
+
+	.tooltip {
+		background-color: #CCC;
+		padding: $tooltip-padding;
+		font-size: 10px;
+		position: absolute;
+		z-index: 1;
+		box-sizing: border-box;
+		color: #0090B2;
+		min-width: 200px;
+
+	}
+
+	[data-position="right"] {
+		.tooltip{
+			left: calc(100% + 10px);
+			@include vertical-align();
+		}
+	}
+
+	[data-position="bottom"] {
+		 .tooltip{
+			top: 25px;
+			left: 50%;
+			margin-left: calc(-#{$tooltip-width} / 2);
+		 }
+	}
+
+	[data-position="top"] {
+		.tooltip{
+			bottom: 25px;
+			left: 50%;
+			margin-left: calc(-#{$tooltip-width} / 2);
+	 	}
+	}
+	[data-position="left"] {
+		.tooltip{
+			right: calc(100% + 10px);
+			@include vertical-align();
+		}
+	}
+}
